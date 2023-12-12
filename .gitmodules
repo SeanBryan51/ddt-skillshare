@@ -2,3 +2,4 @@
 	path = CABLE
 	url = https://github.com/SeanBryan51/CABLE.git
 	branch = enable-mpi-debug-flags
+    ignore = dirty
