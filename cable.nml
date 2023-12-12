@@ -1,0 +1,76 @@
+&cable
+   filename%met = ''
+   filename%out = 'cable_out.nc'
+   filename%log = 'cable_log.txt'
+   filename%restart_in = ''
+   filename%restart_out = ''
+   filename%type = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_gridinfo.nc'
+   filename%veg = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/def_veg_params_zr_clitt_albedo_fix.txt'
+   filename%soil = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/def_soil_params.txt'
+   vegparmnew = .TRUE.  ! using new format when true
+   soilparmnew = .TRUE.  ! using new format when true
+   spinup = .FALSE.
+   delsoilM = 0.001   ! allowed variation in soil moisture for spin up
+   delsoilT = 0.01    ! allowed variation in soil temperature for spin up
+   output%restart = .FALSE.  ! should a restart file be created?
+   output%met = .TRUE.  ! input met data
+   output%flux = .TRUE.  ! convective, runoff, NEE
+   output%soil = .TRUE.  ! soil states
+   output%snow = .TRUE.  ! snow states
+   output%radiation = .TRUE.  ! net rad, albedo
+   output%carbon = .TRUE.  ! NEE, GPP, NPP, stores
+   output%veg = .TRUE.  ! vegetation states
+   output%patch = .FALSE.  ! patch              
+   output%patchfrac = .TRUE.  ! patchfrac output  
+   output%params = .TRUE.  ! input parameters used to produce run
+   output%balances = .TRUE.  ! energy and water balances
+   check%ranges = .FALSE.  ! variable ranges, input and output
+   check%energy_bal = .TRUE.  ! energy balance
+   check%mass_bal = .TRUE.  ! water/mass balance
+   verbose = .TRUE.
+   leaps = .TRUE. ! calculate timing with leap years?
+   logn = 88      ! log file number - declared in input module
+   fixedCO2 =286.0 ! if not found in met file, in ppmv
+   !spincasainput = ''    !FALSE   ! input required to spin casacnp offline
+   spincasa = .FALSE.     ! spin casa before running the model if TRUE, and should be set to FALSE if spincasainput 
+   l_laiFeedbk = .FALSE.  ! using prognostic LAI
+   l_vcmaxFeedbk = .FALSE.  ! using prognostic Vcmax
+   ncciy = 1901   ! 0 for not using gswp
+   redistrb = .FALSE.  ! Turn on/off the hydraulic redistribution
+   wiltParam = 0.5
+   satuParam = 0.8
+   cable_user%FWSOIL_SWITCH = 'standard'
+                                                 ! 1. standard 
+                                                 ! 2. non-linear extrapolation 
+                                                 ! 3. Lai and Ktaul 2000 
+   cable_user%DIAG_SOIL_RESP = 'ON ' 
+   cable_user%LEAF_RESPIRATION = 'ON ' 
+   cable_user%RUN_DIAG_LEVEL = 'BASIC'        ! choices are: 
+                                                 ! 1. BASIC
+                                                 ! 1. NONE
+   cable_user%CONSISTENCY_CHECK = .TRUE.      ! TRUE outputs combined fluxes at each timestep for comparisson to A control run 
+   cable_user%CASA_DUMP_READ = .FALSE.      ! TRUE reads CASA forcing from netcdf format
+   cable_user%CASA_DUMP_WRITE = .FALSE.      ! TRUE outputs CASA forcing in netcdf format
+   cable_user%SSNOW_POTEV = 'HDM'      ! Humidity Deficit Method
+   output%averaging = 'monthly'
+   cable_user%GS_SWITCH = 'medlyn'
+   cable_user%GW_MODEL = .FALSE.
+   cable_user%or_evap = .FALSE.
+   cable_user%GSWP3 = .TRUE.
+   cable_user%MetType = 'gswp3'
+   CABLE_USER%YearStart = 0
+   CABLE_USER%YearEnd = 0
+   cable_user%CASA_fromZero = .FALSE.
+   CABLE_USER%soil_thermal_fix =.TRUE.
+   l_casacnp=.FALSE. 
+   icycle=0
+   gswpfile%mask = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_landmask.nc'
+   gswpfile%Rainf = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_Rainf_1901.nc' 
+   gswpfile%snowf = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_Snowf_1901.nc' 
+   gswpfile%LWdown = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_LWdown_1901.nc' 
+   gswpfile%SWdown = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_SWdown_1901.nc' 
+   gswpfile%PSurf = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_PSurf_1901.nc' 
+   gswpfile%Qair = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_Qair_1901.nc' 
+   gswpfile%Tair = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_Tair_1901.nc' 
+   gswpfile%wind = '/g/data/tm70/sb8430/cable-ddt-demo-inputs/crujra_access_Wind_1901.nc' 
+&end
