@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N ddt-demo
+#PBS -l wd
+#PBS -P tm70
+#PBS -q normal
+#PBS -l walltime=2:00:00  
+#PBS -l ncpus=4
+#PBS -l mem=4GB
+#PBS -l storage=gdata/tm70
+
+module load arm-forge
+module load intel-mpi/2019.5.281
+ddt mpirun -n $PBS_NCPUS ./integrate_mpi
+
