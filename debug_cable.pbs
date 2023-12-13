@@ -4,19 +4,20 @@
 #PBS -P tm70
 #PBS -q normal
 #PBS -l walltime=2:00:00  
-#PBS -l ncpus=4
+#PBS -l ncpus=8
 #PBS -l mem=64GB
 #PBS -l storage=gdata/tm70
-set -ex
+
 module load arm-forge
 module add netcdf/4.6.3 
 module add intel-mpi/2019.5.281
+
 RUN_DIR=/scratch/$PROJECT/$USER/ddt-demo
-if [ ! -d $RUN_DIR ]; then
-    mkdir -p $RUN_DIR
-    ln -s `realpath CABLE/src/offline/cable-mpi` $RUN_DIR
-    ln -s `realpath *.nml` $RUN_DIR
-fi
+rm -rf $RUN_DIR
+mkdir -p $RUN_DIR
+ln -s `realpath CABLE/src/offline/cable-mpi` $RUN_DIR
+ln -s `realpath *.nml` $RUN_DIR
+
 cd $RUN_DIR
 ddt mpirun -n $PBS_NCPUS ./cable-mpi
 
