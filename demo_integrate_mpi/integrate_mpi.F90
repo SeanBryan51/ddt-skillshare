@@ -16,7 +16,7 @@ program integrate_mpi
 ! collects a partial sum of those areas, and sends its partial 
 ! sum to the root process.
 
-include '/usr/include/mpif.h'
+use mpi
 parameter (pi=3.141592654)
 integer my_id, root_process, num_procs, ierr
 double precision rect_width, area, sum, x_middle, partial_sum
@@ -49,8 +49,8 @@ end if
 ! I engage in a broadcast so that the number of intervals is 
 ! sent from the root process to the other processes, and ...
 
-call MPI_BCAST (num_intervals, 1, MPI_INTEGER, root_process, 
-&        MPI_COMM_WORLD, ierr)
+call MPI_BCAST (num_intervals, 1, MPI_INTEGER, root_process, &
+    MPI_COMM_WORLD, ierr)
 
 ! calculate the width of a rectangle, and
 
@@ -73,8 +73,8 @@ print *,"proc", my_id, "computes:", partial_sum
 ! are combined, and the grand sum appears in variable "sum" in
 ! the root process,
 
-call MPI_REDUCE (partial_sum, sum, 1, MPI_DOUBLE_PRECISION,
-&       MPI_SUM, root_process, MPI_COMM_WORLD, ierr)
+call MPI_REDUCE (partial_sum, sum, 1, MPI_DOUBLE_PRECISION, &
+    MPI_SUM, root_process, MPI_COMM_WORLD, ierr)
 
 ! and, if I am the root process, print the result.
 
