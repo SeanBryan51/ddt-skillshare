@@ -16,6 +16,8 @@ Supports debugging C, C++, Fortran and Python (limited to Python `3.5` to `3.8` 
 
 See [the NCI opus documentation](https://opus.nci.org.au/display/Help/Arm+HPC+Tools#ArmHPCTools-DDT) on how to run DDT on Gadi.
 
+**Note:** the instructions on NCI Opus are a bit out of date. ARM sold Forge (that includes DDT) to Linaro. So to get the latest version on Gadi: `module load linaro-forge/23.0.1`. And on the [Linaro website](https://www.linaroforge.com/downloadForge/), you can download a remote client for DDT which is faster than running through the X-client.
+
 ### Interactive Debugging
 
 Interactive debugging is typically done via a VDI session or by submitting an interactive PBS job as it will require using the GUI. For the demo, we will use an interactive job.
