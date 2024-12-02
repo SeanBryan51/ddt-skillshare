@@ -10,6 +10,6 @@
 
 rm -f ddt_log.txt ddt_debug.html
 module load linaro-forge/24.0.2
-module load openmpi/4.1.4
+module load intel-mpi/2021.13.1
 ddt --offline -o ddt_debug.html --mem-debug=balanced --debug --log=ddt_log.txt mpirun -n $PBS_NCPUS ./integrate_mpi
 
