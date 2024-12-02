@@ -38,8 +38,11 @@ program integrate_mpi
     if (my_id .eq. root_process) then
         ! I must be the root process, so I will query the user
         ! to determine how many interpolation intervals to use.
-        print *, "please enter the number of intervals to interpolate:"
-        read *, num_intervals
+        ! print *, "please enter the number of intervals to interpolate:"
+        ! read *, num_intervals
+        num_intervals = 4
+        print *, "number of intervals to interpolate: ", num_intervals
+        call sleep(5)
     end if
 
     ! Then...no matter which process I am:
